@@ -1,0 +1,1018 @@
+/* =========================
+   Global / Variables
+   ========================= */
+:root {
+  --primary: #e60012;          
+  --primaryLight: #ff3333;     
+  --secondary: #111;           
+  --secondaryLight: #333;      
+  --headerColor: #fff;         
+  --bodyTextColor: #ccc;       
+  --bodyTextColorWhite: #fafafa;
+
+  /* VON DUTCH FONT SYSTEM - TAMBAHIN INI */
+  --headingFont: 'Anton', 'Bebas Neue', 'Oswald', 'Arial Black', sans-serif;
+  --navigationFont: 'Oswald', 'Arial Narrow', sans-serif;
+  --bodyFont: 'Oswald', 'Arial', sans-serif;
+  --accentFont: 'Russo One', 'Arial Black', sans-serif;
+
+  --topperFontSize: clamp(0.8125rem, 1.6vw, 1rem);
+  --headerFontSize: clamp(1.9375rem, 3.9vw, 3.0625rem);
+  --bodyFontSize: 1rem;
+  --sectionPadding: clamp(3.75rem, 7.82vw, 6.25rem) 1rem;
+}
+
+/* Base reset ringan */
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html, body { margin: 0; padding: 0; }
+
+body {
+  font-family: var(--bodyFont); /* VON DUTCH FONT */
+  font-weight: 400;
+  color: var(--bodyTextColor);
+  background: #111;
+  letter-spacing: 0.02em;
+  line-height: 1.4;
+}
+
+img { max-width: 100%; display: block; }
+
+/* Utility headings / text */
+.cs-topper {
+  font-size: var(--topperFontSize);
+  line-height: 1.2em;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 0.25rem;
+  display: block;
+}
+
+.cs-title {
+  font-size: var(--headerFontSize);
+  font-weight: 900;
+  line-height: 1.2em;
+  max-width: 43.75rem;
+  margin: 0 0 1rem 0;
+  color: var(--headerColor);
+}
+
+.cs-text {
+  font-size: var(--bodyFontSize);
+  line-height: 1.5em;
+  max-width: 40.625rem;
+  margin: 0;
+  color: var(--bodyTextColor);
+}
+
+/* =========================
+   VON DUTCH TYPOGRAPHY SYSTEM
+   ========================= */
+
+.cs-title, h1, h2 {
+  font-family: var(--headingFont);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  line-height: 0.9;
+}
+
+h3, .cs-h3 {
+  font-family: var(--navigationFont);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.cs-topper {
+  font-family: var(--navigationFont);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.cs-button-solid {
+  font-family: var(--navigationFont);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* =========================
+   NAVIGATION SECTION - VON DUTCH STYLE
+   ========================= */
+
+#cs-navigation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 0.1rem 1.5rem;
+    background: rgba(255, 255, 255, 0);
+    backdrop-filter: blur(0px);
+    transition: all 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+    z-index: 10000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* SCROLLED STATE - solid WHITE background (kayak Von Dutch) */
+#cs-navigation.scrolled {
+    background: rgba(255, 255, 255, 0.95); /* PUTIH, bukan hitam */
+    backdrop-filter: blur(20px);
+    box-shadow: 0 4px 32px rgba(0, 0, 0, 0.1);
+    /* padding tetep sama - ga berubah size */
+    padding: 0.1rem 1.5rem;
+}
+
+/* Container utama di dalam nav */
+#cs-navigation .cs-container {
+    width: 100%;
+    max-width: 90rem;
+    margin: 0 auto;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+/* Logo putih di awal */
+#cs-navigation .cs-logo img {
+    content: url('image/whitelogo.png');
+    height: 7rem; /* logo gedein */
+    width: auto;
+    display: block;
+    transition: all 0.3s ease;
+}
+
+/* Logo hitam pas scroll */
+#cs-navigation.scrolled .cs-logo img {
+    content: url('image/blacklogo.png');
+    height: 7rem; /* sama besar */
+}
+/* List navigasi */
+#cs-navigation .cs-ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: clamp(1.25rem, 2.5vw, 2rem);
+    align-items: center;
+}
+
+/* Item list */
+#cs-navigation .cs-ul li {
+    position: relative;
+}
+
+/* Link utama - PUTIH di awal */
+#cs-navigation .cs-li-link {
+    font-family: var(--navigationFont);
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.9); /* PUTIH di awal */
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.25rem;
+    transition: all 0.3s ease;
+    position: relative;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+/* Link jadi GELAP pas scroll */
+#cs-navigation.scrolled .cs-li-link {
+    color: rgba(0, 0, 0, 0.8); /* gelap pas scroll */
+}
+
+/* Hover state - MERAH pas hover */
+#cs-navigation .cs-li-link:hover {
+    color: var(--primary) !important; /* merah pas hover */
+    background: rgba(230, 0, 18, 0.1);
+}
+
+/* Active link - MERAH juga */
+#cs-navigation .cs-li-link.cs-active {
+    color: var(--primary) !important; /* merah pas active */
+    background: rgba(230, 0, 18, 0.1);
+}
+
+/* Active link underline effect */
+#cs-navigation .cs-li-link.cs-active::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 2px;
+    background: var(--primary);
+    border-radius: 1px;
+}
+
+/* =========================
+   MOBILE NAVIGATION
+   ========================= */
+@media only screen and (max-width: 63.9375rem) {
+    #cs-navigation {
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.9); /* putih di mobile juga */
+    }
+    
+    #cs-navigation .cs-container {
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+    
+    /* Toggle (hamburger) - warna disesuaikan */
+    #cs-navigation .cs-toggle {
+        width: 2.5rem;
+        height: 2.5rem;
+        border: none;
+        background: var(--primary); /* merah */
+        border-radius: 0.25rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        z-index: 20000;
+        gap: 0.25rem;
+    }
+    
+    #cs-navigation .cs-line {
+        width: 1.5rem;
+        height: 2px;
+        background: #fff;
+        display: block;
+        transition: all 0.3s ease;
+    }
+    
+    /* Hamburger animation */
+    #cs-navigation.cs-active .cs-line:nth-child(1) {
+        transform: translateY(6px) rotate(45deg);
+    }
+    
+    #cs-navigation.cs-active .cs-line:nth-child(2) {
+        opacity: 0;
+    }
+    
+    #cs-navigation.cs-active .cs-line:nth-child(3) {
+        transform: translateY(-6px) rotate(-45deg);
+    }
+    
+    /* Menu list mobile */
+    #cs-navigation .cs-ul {
+        flex-direction: column;
+        gap: 0.5rem;
+        width: 100%;
+        margin-top: 1rem;
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        transition: all 0.3s ease;
+    }
+    
+    /* Active state mobile */
+    #cs-navigation.cs-active .cs-ul {
+        max-height: 400px;
+        opacity: 1;
+        background: rgba(255, 255, 255, 0.95); /* putih juga */
+        padding: 1rem;
+        border-radius: 0.5rem;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+    
+    #cs-navigation .cs-li-link {
+        font-size: 1.1rem;
+        width: 100%;
+        padding: 0.75rem;
+        text-align: center;
+        color: rgba(0, 0, 0, 0.8); /* gelap di mobile */
+    }
+    
+    #cs-navigation .cs-li-link:hover,
+    #cs-navigation .cs-li-link.cs-active {
+        color: var(--primary) !important; /* merah pas hover/active */
+    }
+}
+
+/* =========================
+   HERO (section #hero-1619)
+   ========================= */
+#hero-1619 {
+  padding: var(--sectionPadding);
+  padding-top: clamp(12.5rem, 31.95vw, 18.75rem);
+  position: relative;
+  z-index: 1;
+  background-color: #111;
+}
+
+#hero-1619 .cs-container {
+  width: 100%;
+  max-width: 80rem;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(3.75rem, 13vw, 11.25rem);
+  position: relative;
+  z-index: 3;
+}
+
+#hero-1619 .cs-content {
+  width: 100%;
+  max-width: 48.75rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  color: #fff;
+}
+
+#hero-1619 .cs-topper {
+  font-size: clamp(0.8125rem, 1.5vw, 1rem);
+  letter-spacing: 0.1em;
+  color: var(--primaryLight);
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+}
+
+#hero-1619 .cs-title {
+  font-size: clamp(2.4375rem, 6.4vw, 3.8125rem);
+  font-weight: 800;
+  line-height: 1.2em;
+  color: #fff;
+  margin: 0 0 2rem 0;
+}
+
+#hero-1619 .cs-text {
+  font-size: clamp(1rem, 1.95vw, 1.25rem);
+  line-height: 1.5em;
+  max-width: 38rem;
+  color: #ddd;
+  margin: 0 0 2rem 0;
+}
+
+#hero-1619 .cs-button-solid {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #fff;
+  text-decoration: none;
+  padding: 0 1.5rem;
+  background: var(--primary);
+  border-radius: 0.25rem;
+  display: inline-block;
+  position: relative;
+  z-index: 5;
+  line-height: 3.2rem;
+  transition: background 0.3s;
+}
+#hero-1619 .cs-button-solid:hover { background: var(--primaryLight); }
+
+#hero-1619 .cs-background {
+  background: url("image/ws.jpg") center / cover no-repeat fixed;
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+#hero-1619 .cs-background::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  z-index: 2;
+}
+
+/* Hero Cards */
+#hero-1619 .cs-card-group {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: clamp(1rem, 2.3vw, 1.25rem);
+  list-style: none;
+  position: relative;
+  z-index: 5;
+}
+
+#hero-1619 .cs-item {
+  grid-column: span 12;
+  padding: clamp(1.5rem, 3vw, 2rem);
+  background: #1a1a1a; /* kotak gelap */
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 0.75rem;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.6); /* shadow biar nongol */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+#hero-1619 .cs-item:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 40px rgba(230,0,18,0.5); /* efek hover merah Von Dutch */
+}
+
+#hero-1619 .cs-icon {
+  width: 2rem;
+  margin-bottom: 1rem;
+  filter: brightness(1000%) sepia(1) saturate(1000%) hue-rotate(-10deg);
+}
+
+#hero-1619 .cs-h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 0.5rem 0;
+}
+
+#hero-1619 .cs-item-text {
+  font-size: 1rem;
+  color: #ccc;
+  margin: 0;
+}
+
+/* Tablet ≥ 768px */
+@media only screen and (min-width: 48rem) {
+  #hero-1619 .cs-item { grid-column: span 6; }
+}
+
+/* Desktop ≥ 1300px */
+@media only screen and (min-width: 81.25rem) {
+  #hero-1619 .cs-item { grid-column: span 3; }
+}
+
+/* =========================
+   SERVICES (section #services-1354)
+   ========================= */
+
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+  #services-1354 {
+    padding: var(--sectionPadding);
+    background: #0f0f0f;
+    position: relative;
+    z-index: 10;
+  }
+
+  #services-1354 .cs-container {
+    width: 100%;
+    max-width: 80rem;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: clamp(3rem, 6vw, 4rem);
+  }
+
+  #services-1354 .cs-content {
+    text-align: center;
+    color: #fff;
+  }
+
+  #services-1354 .cs-topper {
+    color: var(--primaryLight);
+  }
+
+  #services-1354 .cs-title {
+    max-width: 25ch;
+    margin: 0;
+    color: #fff;
+  }
+
+  #services-1354 .cs-card-group {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: clamp(1rem, 2vw, 1.25rem);
+  }
+
+  #services-1354 .cs-item {
+    list-style: none;
+    grid-column: span 12;
+    height: 19rem;
+    background-color: #1a1a1a;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 1rem;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+    position: relative;
+    padding: 1.5rem;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+
+  #services-1354 .cs-item:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 40px rgba(255,106,62,0.5);
+  }
+
+  #services-1354 .cs-link {
+    text-decoration: none;
+    color: #fff;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+    position: relative;
+    z-index: 3;
+  }
+
+  #services-1354 .cs-h3 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #fff;
+    margin: 0;
+    transition: color 0.3s;
+    position: relative;
+    z-index: 3;
+  }
+
+  #services-1354 .cs-item:hover .cs-h3 {
+    color: var(--primaryLight);
+  }
+
+  #services-1354 .cs-background {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+  }
+
+  #services-1354 .cs-background:before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    z-index: 2;
+    transition: background 0.3s;
+  }
+
+  #services-1354 .cs-item:hover .cs-background:before {
+    background: rgba(255,106,62,0.6);
+  }
+
+  #services-1354 .cs-background img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s;
+  }
+
+  #services-1354 .cs-item:hover .cs-background img {
+    transform: scale(1.1);
+  }
+}
+
+/* Tablet - 600px */
+@media only screen and (min-width: 37.5rem) {
+  #services-1354 .cs-item { grid-column: span 6; }
+}
+
+/* Desktop - 1024px */
+@media only screen and (min-width: 64rem) {
+  #services-1354 .cs-content {
+    text-align: left;
+    align-items: flex-start;
+  }
+  #services-1354 .cs-item { grid-column: span 3; }
+}
+
+/* =========================
+   GALLERY (section #gallery-1716)
+   ========================= */
+
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+  #gallery-1716 {
+    padding: var(--sectionPadding);
+    background: #0f0f0f;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+  }
+
+  #gallery-1716 .cs-container {
+    width: 100%;
+    max-width: 80rem;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: clamp(3rem, 6vw, 4rem);
+  }
+
+  #gallery-1716 .cs-content {
+    text-align: left;
+    color: #fff;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  #gallery-1716 .cs-text {
+    margin-bottom: 1rem;
+    color: #ccc;
+  }
+
+  #gallery-1716 .cs-text:last-of-type {
+    margin-bottom: clamp(2rem, 7vw, 4rem);
+    position: relative;
+    z-index: 1;
+  }
+
+  #gallery-1716 .cs-text:last-of-type:before {
+    content: '';
+    width: 100%;
+    height: 80%;
+    background: var(--primary);
+    opacity: .1;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+  }
+
+  #gallery-1716 .cs-button-solid {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #fff;
+    min-width: 9.375rem;
+    padding: 0 1.5rem;
+    background-color: var(--primary);
+    text-decoration: none;
+    line-height: clamp(2.875rem, 5.5vw, 3.5rem);
+    display: inline-block;
+    position: relative;
+    z-index: 1;
+    transition: background 0.3s;
+  }
+
+  #gallery-1716 .cs-button-solid:hover {
+    background: var(--primaryLight);
+  }
+
+  #gallery-1716 .cs-gallery {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    order: -1;
+    gap: 1rem;
+  }
+
+  #gallery-1716 .cs-picture {
+    grid-column: span 4;
+    position: relative;
+    height: 100vw;
+    max-height: 25rem;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.6);
+  }
+
+  #gallery-1716 .cs-picture img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s;
+  }
+
+  #gallery-1716 .cs-picture:hover img {
+    transform: scale(1.1);
+  }
+}
+
+/* Tablet - 768px */
+@media only screen and (min-width: 48rem) {
+  #gallery-1716 .cs-container {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: stretch;
+  }
+
+  #gallery-1716 .cs-content {
+    max-width: 19rem;
+    padding-bottom: clamp(2rem, 7vw, 4rem);
+  }
+
+  #gallery-1716 .cs-gallery { height: auto; }
+
+  #gallery-1716 .cs-picture {
+    min-height: clamp(17.5rem, 37vw, 26.25rem);
+    height: 100%;
+  }
+}
+
+/* =========================
+   FOOTER (section #cs-footer-269)
+   ========================= */
+
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+  #cs-footer-269 {
+    padding: clamp(3.75rem, 7.82vw, 6.25rem) 1rem;
+    background-color: #0d0d0d;
+  }
+
+  #cs-footer-269 .cs-container {
+    width: 100%;
+    max-width: 80rem;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    column-gap: clamp(4.25rem, 10%, 6.25rem);
+  }
+
+  #cs-footer-269 .cs-logo-group {
+    width: 100%;
+    margin-bottom: 2rem;
+  }
+
+  #cs-footer-269 .cs-logo {
+    width: clamp(13.125rem, 8vw, 15rem);
+    margin-bottom: 1.5rem;
+    display: block;
+  }
+
+  #cs-footer-269 .cs-text {
+    font-size: clamp(0.875rem, 2.5vw, 1rem);
+    color: #bbb;
+    line-height: 1.5em;
+    max-width: 33.75rem;
+    margin: 0 0 2rem 0;
+  }
+
+  #cs-footer-269 .cs-header {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 0.875rem;
+    color: #fff;
+  }
+
+  #cs-footer-269 .cs-nav,
+  #cs-footer-269 .cs-contact {
+    padding: 0;
+    margin: 0;
+  }
+
+  #cs-footer-269 .cs-nav-li,
+  #cs-footer-269 .cs-contact-li {
+    list-style: none;
+    margin-bottom: 0.5rem;
+  }
+
+  #cs-footer-269 .cs-nav-link,
+  #cs-footer-269 .cs-contact-link {
+    font-size: 1rem;
+    text-decoration: none;
+    color: #bbb;
+    transition: color 0.3s;
+  }
+
+  #cs-footer-269 .cs-nav-link:hover,
+  #cs-footer-269 .cs-contact-link:hover {
+    color: var(--primary);
+  }
+
+  #cs-footer-269 .cs-social-group {
+    margin-left: auto;
+    margin-top: auto;
+  }
+
+  #cs-footer-269 .cs-social {
+    display: inline-flex;
+    gap: 0.75rem;
+  }
+
+  #cs-footer-269 .cs-social-link {
+    width: 2rem;
+    height: 2rem;
+    background-color: #222;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background 0.3s, transform 0.3s;
+  }
+
+  #cs-footer-269 .cs-social-link:hover {
+    background: var(--primary);
+    transform: translateY(-0.2rem);
+  }
+
+  #cs-footer-269 .cs-social-img {
+    width: 1.2rem;
+    height: 1.2rem;
+    object-fit: contain;
+  }
+}
+
+/* Tablet - 768px */
+@media only screen and (min-width: 48rem) {
+  #cs-footer-269 .cs-container {
+    max-width: 80rem;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr auto;
+    grid-template-areas: "logo nav contact social";
+    align-items: flex-start;
+    gap: clamp(2rem, 5vw, 4rem);
+  }
+
+  #cs-footer-269 .cs-logo-group {
+    grid-area: logo;
+    width: auto;
+    margin-right: 0;
+    margin-bottom: 0;
+  }
+
+  #cs-footer-269 .cs-nav {
+    grid-area: nav;
+  }
+
+  #cs-footer-269 .cs-contact {
+    grid-area: contact;
+  }
+
+  #cs-footer-269 .cs-social-group {
+    grid-area: social;
+    margin-left: 0;
+    margin-top: 0;
+    align-self: flex-start;
+  }
+
+  #cs-footer-269 .cs-text {
+    width: 100%;
+    max-width: 25rem;
+  }
+}
+/* =========================
+   CONTACT INFO SECTION - COMPLETE
+   ========================= */
+
+#contact-info {
+  padding: var(--sectionPadding);
+  background: var(--secondary);
+  color: var(--bodyTextColorWhite);
+}
+
+#contact-info .cs-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 1.5rem;
+  align-items: flex-start;
+  justify-items: center;
+  max-width: 1100px;
+  margin: auto;
+}
+
+/* Header spans both columns - UPDATED FOR CENTER ALIGNMENT */
+.contact-header {
+  grid-column: 1 / -1;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  max-width: 900px;
+  width: 100%;
+  padding: 1rem 0;
+}
+
+.contact-header .cs-topper {
+  font-family: var(--navigationFont);
+  font-size: var(--topperFontSize);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+  display: block;
+  text-align: center; /* FORCE CENTER */
+}
+
+.contact-header .cs-title {
+  font-family: var(--headingFont);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  line-height: 0.9;
+  color: #fff;
+  margin: 0 auto 1rem auto; /* CENTER WITH AUTO MARGINS */
+  text-align: center; /* FORCE CENTER */
+  max-width: 100%;
+}
+
+.contact-header .cs-text {
+  font-family: var(--bodyFont);
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: 0.01em;
+  color: #ccc;
+  max-width: 700px;
+  margin: 0 auto; /* CENTER WITH AUTO MARGINS */
+  text-align: center; /* FORCE CENTER */
+}
+
+/* Contact details - left column */
+.contact-details {
+  width: 100%;
+  max-width: 450px;
+  background: #1a1a1a;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 1rem;
+  padding: 2rem;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+  color: var(--bodyTextColorWhite);
+}
+
+.contact-details .cs-text {
+  margin-bottom: 1.5rem;
+  color: #ccc;
+}
+
+.info-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.info-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin-bottom: 1.2rem;
+  color: #fff;
+}
+
+.info-list .icon {
+  font-size: 1.4rem;
+  color: var(--primary);
+}
+
+/* Map - right column */
+.contact-map {
+  width: 100%;
+  max-width: 450px;
+  background: #1a1a1a;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 1rem;
+  padding: 1rem;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.contact-map iframe {
+  width: 100%;
+  height: 300px;
+  border-radius: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.map-buttons {
+  display: flex;
+  gap: 1rem;
+  width: 100%;
+}
+
+.map-buttons .cs-button-solid {
+  flex: 1;
+  text-align: center;
+  background: var(--primary);
+  color: #fff;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  font-weight: 700;
+  transition: background 0.3s;
+}
+
+.map-buttons .cs-button-solid:hover {
+  background: var(--primaryLight);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  #contact-info .cs-container {
+    grid-template-columns: 1fr;
+  }
+  
+  .contact-header {
+    grid-column: 1;
+  }
+}
